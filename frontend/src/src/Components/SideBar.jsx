@@ -1,5 +1,5 @@
 import { Drawer, Sidebar, TextInput } from "flowbite-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import {
   HiHome,
@@ -7,20 +7,26 @@ import {
   HiSearch,
   HiUpload,
 } from "react-icons/hi";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { fetchProfile } from "../Redux/Features/Profile/profileSlice";
 
 const SideBar = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const dataProfile = useSelector(state => state.profile.data)
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(fetchProfile())
+    }, [dispatch])
 
     const handleClose = () => setIsOpen(false);
 
-    const path = useLocation()
-    console.log(path);
-  
+    const path = useLocation()  
     return (
       <>
         <div className="flex ms-5 items-center justify-center">
-          <small className="text-3xl text-gray-500" onClick={() => setIsOpen(true)}><FiMenu/></small>
+          <small className="text-3xl text-gray-500 cursor-pointer" onClick={() => setIsOpen(true)}><FiMenu/></small>
         </div>
         <Drawer open={isOpen} onClose={handleClose}>
           <div className="flex gap-1">
@@ -47,7 +53,7 @@ const SideBar = () => {
                         Update Password
                       </Sidebar.Item>
                       <Sidebar.Item href="/dashboard/upload-photo" icon={HiUpload} active={path.pathname === '/dashboard/upload-photo' ? true : false}>
-                        Upload Photo
+                      {dataProfile.image ? 'Edit Photo' : 'Upload Photo'}
                       </Sidebar.Item>
                     </Sidebar.ItemGroup>
                   </Sidebar.Items>
