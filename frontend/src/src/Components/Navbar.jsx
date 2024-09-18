@@ -35,58 +35,63 @@ const NavbarComponent = () => {
     const location = useLocation()
     const path = location.pathname
     return (
-    <Navbar fluid rounded className="rounded-none min-w-full fixed top-0 z-10">
-        <Navbar.Brand href="#">
-        {
-            !path.startsWith('/dashboard') && (
-                <>
-                <Navbar.Toggle />
-                <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white ms-1">Flowbite</span>
-                </>
-            )
-        }
-        {
-            path.startsWith('/dashboard') && (
-                <>
-                <SideBar/>
-                </>
-            )
-        }
-        </Navbar.Brand>
-        <div className="flex md:order-2">
-            <DarkThemeToggle className="me-2"/>
-            <Dropdown
-            arrowIcon={false}
-            inline
-            label={ userProfile?.image ? (<>
-                <Avatar className="me-4" alt="User settings" img={`http://localhost:3000/${userProfile?.image}`} rounded />
-                </>) : <><Avatar className="me-4" placeholderInitials={userProfile?.first_name?.substr(0,1).toUpperCase()} rounded/></>
+        <Navbar fluid rounded className="rounded-none min-w-full fixed top-0 z-10">
+            <Navbar.Brand href="#">
+            {
+                !path.startsWith('/dashboard') && (
+                    <>
+                    <Navbar.Toggle />
+                    <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+                    <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white ms-1">Flowbite</span>
+                    </>
+                )
             }
-            >
-            <Dropdown.Header>
-                <span className="block text-sm">{user?.name}</span>
-                <span className="block truncate text-sm font-medium">{user?.email}</span>
-            </Dropdown.Header>
-            <Dropdown.Item><Link to='/dashboard'>Dashboard</Link></Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
-            </Dropdown>
-        </div>
-        {
-            !path.startsWith('/dashboard') && (
-                <Navbar.Collapse>
-                    <Navbar.Link href="#" active>
-                    Home
-                    </Navbar.Link>
-                    <Navbar.Link href="#">About</Navbar.Link>
-                    <Navbar.Link href="#">Services</Navbar.Link>
-                    <Navbar.Link href="#">Pricing</Navbar.Link>
-                    <Navbar.Link href="#">Contact</Navbar.Link>
-                </Navbar.Collapse>
-            ) 
-        }
-        
+            </Navbar.Brand>
+            <div className="me-auto">
+            {
+                path.startsWith('/dashboard') && (
+                    <>
+                    <SideBar/>
+                    </>
+                )
+            }
+            </div>
+            <div className="flex md:order-2">
+                <DarkThemeToggle className="me-2"/>
+                <Dropdown
+                arrowIcon={false}
+                inline
+                label={ userProfile?.image ? (<>
+                    <Avatar className="me-4" alt="User settings" img={`http://localhost:3000/${userProfile?.image}`} rounded />
+                    </>) : <><Avatar className="me-4" placeholderInitials={userProfile?.first_name?.substr(0,1).toUpperCase()} rounded/></>
+                }
+                >
+                <Dropdown.Header>
+                    <span className="block text-sm">{user?.name}</span>
+                    <span className="block truncate text-sm font-medium">{user?.email}</span>
+                </Dropdown.Header>
+                <Dropdown.Item><Link to='/dashboard'>Dashboard</Link></Dropdown.Item>
+                {   
+                    path.startsWith('/dashboard') &&
+                    <Dropdown.Item><Link to='/home'>Out Dashboard</Link></Dropdown.Item>
+                }
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
+                </Dropdown>
+            </div>
+            {
+                !path.startsWith('/dashboard') && (
+                    <Navbar.Collapse className="me-auto">
+                        <Navbar.Link href="#" active>
+                        Home
+                        </Navbar.Link>
+                        <Navbar.Link href="#">About</Navbar.Link>
+                        <Navbar.Link href="#">Services</Navbar.Link>
+                        <Navbar.Link href="#">Pricing</Navbar.Link>
+                        <Navbar.Link href="#">Contact</Navbar.Link>
+                    </Navbar.Collapse>
+                ) 
+            }
         </Navbar>
   )
 }

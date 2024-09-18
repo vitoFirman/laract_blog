@@ -3,6 +3,7 @@ import FooterComponent from "../../Components/Footer"
 import NavbarComponent from "../../Components/Navbar"
 
 const UploadPhoto = () => {
+  document.title = 'Upload Photo'
   return (
     <div>
         <NavbarComponent/>

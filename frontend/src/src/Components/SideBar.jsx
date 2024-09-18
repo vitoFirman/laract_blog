@@ -2,21 +2,20 @@ import { Drawer, Sidebar, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import {
-  HiChartPie,
-  HiClipboard,
-  HiCollection,
   HiHome,
-  HiInformationCircle,
   HiKey,
-  HiPencil,
   HiSearch,
   HiUpload,
 } from "react-icons/hi";
+import { useLocation } from "react-router-dom";
 
 const SideBar = () => {
     const [isOpen, setIsOpen] = useState(true);
 
     const handleClose = () => setIsOpen(false);
+
+    const path = useLocation()
+    console.log(path);
   
     return (
       <>
@@ -41,31 +40,14 @@ const SideBar = () => {
                   </form>
                   <Sidebar.Items>
                     <Sidebar.ItemGroup>
-                      <Sidebar.Item href="/dashboard" icon={HiChartPie} active>
-                        Dashboard
-                      </Sidebar.Item>
-                      <Sidebar.Item href="/home" icon={HiHome}>
+                      <Sidebar.Item href="/dashboard" icon={HiHome} active={path.pathname === '/dashboard' ? true : false}>
                         Home
                       </Sidebar.Item>
-                      <Sidebar.Item href="/dashboard/update-password" icon={HiKey}>
+                      <Sidebar.Item href="/dashboard/update-password" active={path.pathname === '/dashboard/update-password' ? true : false} icon={HiKey}>
                         Update Password
                       </Sidebar.Item>
-                      <Sidebar.Item href="/dashboard/upload-photo" icon={HiUpload}>
+                      <Sidebar.Item href="/dashboard/upload-photo" icon={HiUpload} active={path.pathname === '/dashboard/upload-photo' ? true : false}>
                         Upload Photo
-                      </Sidebar.Item>
-                      <Sidebar.Item href="#" icon={HiPencil}>
-                        Sign up
-                      </Sidebar.Item>
-                    </Sidebar.ItemGroup>
-                    <Sidebar.ItemGroup>
-                      <Sidebar.Item href="#" icon={HiClipboard}>
-                        Docs
-                      </Sidebar.Item>
-                      <Sidebar.Item href="#" icon={HiCollection}>
-                        Components
-                      </Sidebar.Item>
-                      <Sidebar.Item href="#" icon={HiInformationCircle}>
-                        Help
                       </Sidebar.Item>
                     </Sidebar.ItemGroup>
                   </Sidebar.Items>
