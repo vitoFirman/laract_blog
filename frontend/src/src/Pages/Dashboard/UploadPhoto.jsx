@@ -49,9 +49,9 @@ const UploadPhoto = () => {
   return (
     <div>
         <NavbarComponent/>
-        <div className="min-h-[80vh]">
+        <div>
           <div className="pt-28 px-10 w-full mx-auto max-w-md">
-            <Card className="max-w-md mt-7 md:w-[800px]">
+            <Card className="max-w-md my-8 md:w-[800px]">
             <h1 className="text-center text-4xl flex justify-center">
             <HiUpload className={`mt-1 ${localStorage.getItem('flowbite-theme-mode') === 'dark' ? 'text-white' : 'text-black'}`}/>
           </h1>

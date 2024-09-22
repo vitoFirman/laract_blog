@@ -3,7 +3,7 @@ networks:
     external: true
 services:
   app:
-    image: 'rohmanahmad/php8.3-apache-full:latest'
+    image: 'vitofirman/php8.2-apache'
     container_name: blog-app
     working_dir: /var/www/html
     stdin_open: true

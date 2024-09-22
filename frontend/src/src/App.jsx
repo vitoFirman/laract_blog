@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import UpdatePassword from "./Pages/Dashboard/UpdatePassword";
 import UploadPhoto from "./Pages/Dashboard/UploadPhoto";
+import Welcome from "./Pages/Welcome";
 
 function App() {
   const { mode } = useThemeMode();
@@ -22,6 +23,7 @@ function App() {
         <div className={mode === 'dark' ? 'bg-gray-900' : 'bg-slate-300'}>
           <Router>
             <Routes>
+              <Route path="/" element={<Welcome/>}/>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/home" element={<Home />} />

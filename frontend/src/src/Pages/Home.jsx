@@ -30,18 +30,18 @@ const Home = () => {
         <img src={photo2} alt="..." className="h-[400px] w-full object-cover" />
         </Carousel>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-10">
+        <div className="grid grid-cols-2 content-center text-xs text-left md:grid-cols-3 lg:text-base lg:grid-cols-4 gap-3 mt-10 justify-items-center">
             <Card
-                className="w-full overflow-hidden"
+                className="max-w-sm overflow-hidden"
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                 renderImage={() => <><img src={photo} alt="" className="transition ease-in-out hover:scale-110 cursor-pointer duration-300"/></>}
             >
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <p className="text-gray-700 dark:text-gray-400">
                     Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
                 </p>
             </Card>
             <Card
-                className="w-full overflow-hidden"
+                className="max-w-sm overflow-hidden"
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                 renderImage={() => <><img src={photo2} alt="" className="transition ease-in-out hover:scale-110 cursor-pointer duration-300"/></>}
             >
@@ -50,7 +50,7 @@ const Home = () => {
                 </p>
             </Card>
             <Card
-                className="w-full overflow-hidden"
+                className="max-w-sm overflow-hidden"
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                 renderImage={() => <><img src={photo3} alt="" className="transition ease-in-out hover:scale-110 cursor-pointer duration-300"/></>}
             >
@@ -59,7 +59,7 @@ const Home = () => {
                 </p>
             </Card>
             <Card
-                className="w-full overflow-hidden"
+                className="max-w-sm overflow-hidden"
                 imgAlt="Meaningful alt text for an image that is not purely decorative"
                 renderImage={() => <><img src={photo4} alt="" className="transition ease-in-out hover:scale-110 cursor-pointer duration-300"/></>}
             >
